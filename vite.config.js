@@ -8,7 +8,20 @@ export default defineConfig({
   // 3. CSS 설정을 여기에 '통합'하기
   css: {
     postcss: {
-      plugins: [tailwindcss, autoprefixer],
+      plugins: [
+        // 4. tailwindcss를 '여기서' 직접 설정! (파일 삭제했으니까)
+        tailwindcss({
+          content: [
+            "./index.html",
+            "./src/**/*.{js,ts,jsx,tsx}",
+          ],
+          theme: {
+            extend: {},
+          },
+          plugins: [],
+        }),
+        autoprefixer, // autoprefixer는 그냥 실행
+      ],
     },
   },
   plugins: [react()],
